@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { DnDContext } from '../store/store';
+import SpellCard from '../components/SpellCard';
 
 function Spells() {
   const {spells} = useContext(DnDContext);
   
   return <div>
     {spells.map((spell)=>
-    <h1>{spell.name}</h1>)}
+    <SpellCard spell={spell.name}/>)}
   </div>;
 }
 
