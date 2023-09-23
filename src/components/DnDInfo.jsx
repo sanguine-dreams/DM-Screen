@@ -11,11 +11,11 @@ function DndProvider({children}){
     const [equipments, setEquipments] = useState([]);
 
     useEffect(()=> {
-        axios.get("https://www.dnd5eapi.co/api/conditions").then((response) => 
+        axios.get("https://api.open5e.com/v1/conditions/").then((response) => 
     {setConditions(response.data.results)})
-    axios.get("https://www.dnd5eapi.co/api/spells").then((response) => 
+    axios.get("https://api.open5e.com/v1/spells/").then((response) => 
     {setSpells(response.data.results)})
-    axios.get("https://www.dnd5eapi.co/api/Monsters").then((response) => 
+    axios.get("https://api.open5e.com/v1/monsters/").then((response) => 
     {setMonsters(response.data.results)})
     axios.get("https://www.dnd5eapi.co/api/Equipment").then((response) => 
     {setEquipments(response.data.results)})

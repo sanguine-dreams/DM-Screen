@@ -7,7 +7,7 @@ function Spells() {
   
   return <div>
     {spells.map((spell)=>
-    <SpellCard spell={spell.name}/>)}
+    <SpellCard spell={spell}/>)}
   </div>;
 }
 

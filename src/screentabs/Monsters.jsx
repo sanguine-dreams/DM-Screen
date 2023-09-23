@@ -7,7 +7,7 @@ function Monsters() {
   console.log(monsters);
   return <div>
     {monsters.map((monster)=>
-    <MonsterCard monster={monster.name} />)}
+    <MonsterCard monster={monster} />)}
   </div>;
 }
 

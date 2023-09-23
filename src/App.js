@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
+import './index.css';
 import Screen from './pages/Screen';
 import DndProvider from './components/DnDInfo';
 
 
 function App() {
-  return <div className='App'>
-    <DndProvider>
+  return <div className='App w-full h-full'>
+    <DndProvider> 
     <Screen />
     </DndProvider>
     </div>

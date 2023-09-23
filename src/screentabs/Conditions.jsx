@@ -5,9 +5,9 @@ import ConditionCard from '../components/ConditionCard';
 function Conditions() {
   
 const {conditions} = useContext(DnDContext);
-  return <div className='conditions'>
+  return <div className='conditions grid'>
     {conditions.map((condition)=>
-    <ConditionCard condition={condition.name}/>)}
+    <ConditionCard condition={condition}/>)}
     </div>;
 }
 

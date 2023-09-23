@@ -9,18 +9,18 @@ function TabRight({ tabs }) {
 
   return (
     <div>
-      <div className="tab-buttons">
+      <div className="tab-buttons flex justify-center mt-5">
         {tabs.map((tab, index) => (
-          <button
+          <button 
             key={index}
             onClick={() => handleTabClick(index)}
-            className={activeTab === index ? 'active' : ''}
+            className={activeTab === index ? 'active bg-orange-100 text-red-900 rounded-t-lg py-8' : 'bg-gray-200 cursor-pointer text-red-900 rounded-t-lg py-8'}
           >
             {tab.label}
           </button>
         ))}
       </div>
-      <div className="tab-content">
+      <div className="tab-content w-[45vw] p-5 bg-orange-100 overflow-y-scroll">
         {tabs[activeTab].content}
       </div>
     </div>

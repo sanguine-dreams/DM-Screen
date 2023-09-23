@@ -22,7 +22,7 @@ function Screen(){
       ];
     
       return (
-        <div className="Screen ">
+        <div className="Screen text-center flex flex-row justify-between ">
           <TabLeft tabs={tabsL} />
           <TabRight tabs={tabsR} />
           
