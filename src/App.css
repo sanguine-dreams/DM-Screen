@@ -1,48 +1,9 @@
-/*
-  Based on TailwindCSS recommendations,
-  consider using classes instead of the `@apply` directive
-  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
-*/
-.App {
-  @apply h-full w-full;
-}
-.Screen {
-  @apply text-center flex flex-row justify-between;
-  font-family: Arial, sans-serif;
-}
-.tab-buttons {
-  @apply flex justify-center gap-5 mt-5;
-}
-.tab-buttons button {
-  @apply bg-[#F4F0F1] cursor-pointer text-[#5C180D] px-5 py-2.5 rounded-[15px_15px_0_0] border-[none];
-  outline: none;
-}
-.tab-buttons button.active {
-  @apply bg-[#FCF5E5] text-[#5C180D];
-}
-.tab-content {
-  @apply w-[45vw] bg-[#FCF5E5] h-[88vh] overflow-y-scroll p-5;
-}
-.conditions {
-  @apply grid grid-cols-[repeat(3,1fr)] gap-2.5;
-}
-.condition-card,
-.spell-card,
-.equipment-card,
-.monster-card {
-  @apply flex flex-wrap border-[brown] border-double border-2;
-}
-.condition-card h1,
-.spell-card h1,
-.equipment-card h1,
-.monster-card h1 {
-  @apply m-4;
-}
 ::-webkit-scrollbar {
-  @apply w-[5px];
+  width: 5px;
+
 }
 ::-webkit-scrollbar-track {
-  background: none;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
   @apply rounded-[5px];
@@ -51,3 +12,4 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(196, 51, 51);
 }
+
