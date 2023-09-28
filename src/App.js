@@ -1,14 +1,14 @@
 import React from 'react';
 import './index.css';
 import './App.css';
-import Screen from './pages/Screen';
 import DndProvider from './components/DnDInfo';
+import Routing from './components/Routing';
 
 
 function App() {
   return <div className='App w-screen '>
     <DndProvider> 
-    <Screen />
+  <Routing />
     </DndProvider>
     </div>
 }

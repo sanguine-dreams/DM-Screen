@@ -4,9 +4,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Modesto Condesed' , 'Modesto expanded';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -14,4 +12,15 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+  font-family: 'Modesto Condesed';
+  src: url('../src/assets/fonts/modesto-condensed-bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Modesto expanded';
+  src: url('../src/assets/fonts/modesto-expanded.ttf');
 }
