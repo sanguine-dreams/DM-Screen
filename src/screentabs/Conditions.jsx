@@ -7,12 +7,15 @@ function Conditions() {
 
   const {conditions} = useContext(DnDContext);
   return (
-    <div className='h-full grid grid-cols-3'>
-      { conditions.map((condition) => <Accordion>
-        <ConditionCard condition={condition}/>
-      {/* <AccordionItem key="1" aria-label="Accordion 1" title={`${condition}`}>
-      </AccordionItem> */}
+    <div className='h-full'>
+
+      {conditions.map((condition) => <Accordion>
+   
+      <AccordionItem key="1" aria-label="Accordion 1" title={`${condition.name}`}>
+      {condition.desc}
+      </AccordionItem>
     </Accordion>) }
+
     </div>
   )
 }

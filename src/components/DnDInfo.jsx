@@ -7,19 +7,20 @@ function DndProvider({ children }) {
   const [spellCount, setSpellCount] = useState();
   const [conditions, setConditions] = useState([]);
   const [spells, setSpells] = useState([]);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(25);
   const [monsters, setMonsters] = useState([]);
   const [magicItems, setMagicItems] = useState([])
   const [weapons, setWeapons] = useState([])
   const [armor, setArmor] = useState([])
+ 
 
   useEffect(() => {
     api.get("/conditions/").then((response) => {
       setConditions(response.data.results);
     });
 
-    api.get(`/spells/?page=${page + 1}&limit=${rowsPerPage}`).then((response) => {
+    api.get(`/spells/?page=${page}`).then((response) => {
       setSpellCount(response.data.count);
       setSpells(response.data.results);
     });
