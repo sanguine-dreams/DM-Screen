@@ -11,9 +11,9 @@ import Spells from "../screentabs/Spells";
 
 function Screen(){
     const tabsL = [
-        { label: 'Campaign Notes', content: <Notes /> },
-        { label: 'Monsters', content: <Monsters /> },
-        { label: 'Equipment', content: <Equipment /> },
+      { label: 'Monsters', content: <Monsters /> },
+      { label: 'Equipment', content: <Equipment /> },
+      { label: 'Campaign Notes', content: <Notes /> },
       ];
       const tabsR = [
         { label: 'Player Sheets', content: <Player /> },
