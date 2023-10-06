@@ -18,7 +18,7 @@ function Screen(){
       const tabsR = [
         { label: 'Player Sheets', content: <Player /> },
         { label: 'Conditions', content:<Conditions /> },
-        { label: 'Spells', content: <Spells />},
+        // { label: 'Spells', content: <Spells />},
       ];
     
       return (
