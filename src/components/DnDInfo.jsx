@@ -8,7 +8,7 @@ function DndProvider({ children }) {
   const [conditions, setConditions] = useState([]);
   const [spells, setSpells] = useState([]);
   const [page, setPage] = useState(1);
-  const [rowsPerPage, setRowsPerPage] = useState(25);
+  const [rowsPerPage, setRowsPerPage] = useState(49);
   const [monsters, setMonsters] = useState([]);
   const [magicItems, setMagicItems] = useState([])
   const [weapons, setWeapons] = useState([])
@@ -25,7 +25,7 @@ function DndProvider({ children }) {
       setSpells(response.data.results);
     });
 
-    api.get("/monsters/").then((response) => {
+    api.get(`/monsters/?page=${page}`).then((response) => {
       setMonsters(response.data.results);
     });
 

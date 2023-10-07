@@ -24,7 +24,7 @@ export default function Spells() {
             showShadow
             color="secondary"
             page={page}
-            total={29}
+            total={pages}
             onChange={(page) => setPage(page)}
           />
         </div>

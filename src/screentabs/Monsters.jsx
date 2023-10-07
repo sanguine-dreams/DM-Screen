@@ -12,8 +12,10 @@ import {
 } from "@nextui-org/react";
 
 function Monsters() {
-  const { monsters } = useContext(DnDContext);
+  const { monsters, page, rowsPerPage, setPage} = useContext(DnDContext);
   console.log(monsters);
+
+  // const pages = Math.ceil(spellCount / rowsPerPage);
 
   return (
     <div className="scale-x-[-1]">
@@ -31,7 +33,7 @@ function Monsters() {
             showShadow
             color="secondary"
             page={page}
-            total={29}
+            total={10}
             onChange={(page) => setPage(page)}
           />
         </div>
