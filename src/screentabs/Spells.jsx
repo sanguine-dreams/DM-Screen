@@ -14,6 +14,7 @@ export default function Spells() {
 
   return (
     <Table 
+    isStriped
       aria-label="Example table with client side pagination"
       bottomContent={
         <div className="flex w-full justify-center">
@@ -23,7 +24,7 @@ export default function Spells() {
             showShadow
             color="secondary"
             page={page}
-            total={pages}
+            total={29}
             onChange={(page) => setPage(page)}
           />
         </div>
@@ -33,16 +34,20 @@ export default function Spells() {
       }}
     >
       <TableHeader>
-        <TableColumn key="name">NAME</TableColumn>
-        <TableColumn key="role">ROLE</TableColumn>
-        <TableColumn key="status">STATUS</TableColumn>
+        <TableColumn>NAME</TableColumn>
+        <TableColumn>LEVEL</TableColumn>
+        <TableColumn>CASTING TIME</TableColumn>
+        <TableColumn>DURATION</TableColumn>
+        <TableColumn>RANGE</TableColumn>
       </TableHeader>
       <TableBody items={spells}>
         {(spell) => (
-          <TableRow key={spell.name}>
+          <TableRow key={spell.slug}>
             <TableCell>{spell.name}</TableCell>
-            <TableCell>{spell.name}</TableCell>
-            <TableCell>{spell.name}</TableCell>
+            <TableCell>{spell.level}</TableCell>
+            <TableCell>{spell.casting_time.slice(0, 10)}</TableCell>
+            <TableCell>{spell.duration}</TableCell>
+            <TableCell>{spell.range}</TableCell>
           </TableRow>
         )}
       </TableBody>

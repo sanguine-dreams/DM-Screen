@@ -8,7 +8,7 @@ import {
   TableColumn,
   TableRow,
   TableCell,
-  Chip,
+  Chip, Pagination
 } from "@nextui-org/react";
 
 function Monsters() {
@@ -20,7 +20,26 @@ function Monsters() {
       {/* {monsters.map((monster)=>
     <MonsterCard monster={monster} />)} */}
 
-      <Table isStriped aria-label="Example static collection table">
+<Table 
+    isStriped
+      aria-label="Example table with client side pagination"
+      bottomContent={
+        <div className="flex w-full justify-center">
+          <Pagination
+            isCompact
+            showControls
+            showShadow
+            color="secondary"
+            page={page}
+            total={29}
+            onChange={(page) => setPage(page)}
+          />
+        </div>
+      }
+      classNames={{
+        wrapper: "min-h-[222px]",
+      }}
+    >
         <TableHeader>
           <TableColumn>Monster Name</TableColumn>
           <TableColumn>CR Rating</TableColumn>

@@ -12,7 +12,7 @@ function DndProvider({ children }) {
   const [monsters, setMonsters] = useState([]);
   const [magicItems, setMagicItems] = useState([])
   const [weapons, setWeapons] = useState([])
-  const [armor, setArmor] = useState([])
+  const [armor, setArmor] = useState([])     
  
 
   useEffect(() => {
