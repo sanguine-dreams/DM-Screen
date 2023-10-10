@@ -10,25 +10,37 @@ function DndProvider({ children }) {
   const [page, setPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(49);
   const [monsters, setMonsters] = useState([]);
-  const [magicItems, setMagicItems] = useState([])
-  const [weapons, setWeapons] = useState([])
-  const [armor, setArmor] = useState([])     
- 
+  const [magicItems, setMagicItems] = useState([]);
+  const [weapons, setWeapons] = useState([]);
+  const [armor, setArmor] = useState([]);
+  const [monsterFiltering, setMonsterFiltering] = useState({
+    CR:false, search:""
+  });
 
   useEffect(() => {
     api.get("/conditions/").then((response) => {
       setConditions(response.data.results);
     });
-
+  }, []);
+  useEffect(() => {
     api.get(`/spells/?page=${page}`).then((response) => {
       setSpellCount(response.data.count);
       setSpells(response.data.results);
     });
+  }, [page, rowsPerPage]);
+  useEffect(() => {
+    api
+      .get(
+        `/monsters/${
+          monsterFiltering.CR ? "?ordering=challenge_rating&" : ""
+        }?page=${page}`
+      )
+      .then((response) => {
+        setMonsters(response.data.results);
+      });
+  }, [monsterFiltering]);
 
-    api.get(`/monsters/?page=${page}`).then((response) => {
-      setMonsters(response.data.results);
-    });
-
+  useEffect(() => {
     api.get("/armor/").then((response) => {
       setArmor(response.data.results);
     });
@@ -39,8 +51,8 @@ function DndProvider({ children }) {
 
     api.get("/magicitems/").then((response) => {
       setMagicItems(response.data.results);
-    });    
-  }, [page, rowsPerPage]);
+    });
+  }, []);
 
   return (
     <DnDContext.Provider
@@ -55,7 +67,9 @@ function DndProvider({ children }) {
         spellCount,
         weapons,
         armor,
-        magicItems
+        magicItems,
+        monsterFiltering,
+        setMonsterFiltering,
       }}
     >
       {children}
