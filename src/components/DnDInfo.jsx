@@ -16,6 +16,7 @@ function DndProvider({ children }) {
   const [monsterFiltering, setMonsterFiltering] = useState({
     CR:false, search:""
   });
+  const [armorFiltering, setArmorFiltering] = useState(false)
 
   useEffect(() => {
     api.get("/conditions/").then((response) => {
@@ -41,18 +42,21 @@ function DndProvider({ children }) {
   }, [monsterFiltering]);
 
   useEffect(() => {
-    api.get("/armor/").then((response) => {
+    api.get(`/armor/${
+      armorFiltering ? "?ordering=category" : ""
+    }`).then((response) => {
       setArmor(response.data.results);
     });
 
-    api.get("/weapons/").then((response) => {
+    api.get(`/weapons/?page=${page}`).then((response) => {
       setWeapons(response.data.results);
     });
 
-    api.get("/magicitems/").then((response) => {
+    api.get(`/magicitems/?page=${page}`).then((response) => {
+      
       setMagicItems(response.data.results);
     });
-  }, []);
+  }, [page, rowsPerPage, armorFiltering]);
 
   return (
     <DnDContext.Provider
@@ -70,6 +74,7 @@ function DndProvider({ children }) {
         magicItems,
         monsterFiltering,
         setMonsterFiltering,
+        armorFiltering, setArmorFiltering
       }}
     >
       {children}

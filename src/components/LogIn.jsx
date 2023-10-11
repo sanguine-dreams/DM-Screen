@@ -21,9 +21,10 @@ export function Login() {
       .catch((error) => console.log(error));
   };
   return (
-    <div>
+    <div className="w-screen h-screen flex items-center justify-center">
       <form
-        className="flex flex-col p-4 h-full w-4/12 bg-red-700 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100
+        className="flex flex-col p-4 w-4/12 bg-red-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border border-gray-100
+
 "
         onSubmit={(e) => SignIn(e)}
       >
@@ -37,7 +38,6 @@ export function Login() {
           placeholder="enter email"
         ></input>
 
-        <label>{signInCreds.email}</label>
 
         <input
           className="p-4 bg-transparent"

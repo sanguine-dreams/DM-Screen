@@ -56,7 +56,6 @@ function Monsters() {
         <TableHeader>
           <TableColumn>Monster Name</TableColumn>
           <TableColumn>
-            {" "}
             <button onClick={controlCR}>CR</button>
           </TableColumn>
           <TableColumn>Type</TableColumn>

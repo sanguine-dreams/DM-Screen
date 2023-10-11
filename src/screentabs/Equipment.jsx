@@ -2,6 +2,9 @@ import React, {useContext} from 'react';
 import { DnDContext } from '../store/store';
 import EquipmentCard from '../components/EquipmentCard';
 import {Accordion, AccordionItem} from "@nextui-org/react";
+import MagicItems from '../components/MagicItems';
+import Weapons from '../components/Weapons';
+import Armor from '../components/Armor';
 
 function Equipment() {
   const {weapons, armor, magicItems} = useContext(DnDContext);
@@ -10,13 +13,13 @@ function Equipment() {
 
 <Accordion>
       <AccordionItem key="1" aria-label="Accordion 1" title="Magic Items">
-        <EquipmentCard equipment={magicItems}/>
+        <MagicItems magicItems={magicItems}/>
       </AccordionItem>
       <AccordionItem key="2" aria-label="Accordion 2" title="Weapons">
-      <EquipmentCard equipment={weapons}/>
+      <Weapons weapons={weapons}/>
       </AccordionItem>
       <AccordionItem key="3" aria-label="Accordion 3" title="Armor">
-      <EquipmentCard equipment={armor}/>
+      <Armor armor={armor} />
       </AccordionItem>
     </Accordion>
   </div>;

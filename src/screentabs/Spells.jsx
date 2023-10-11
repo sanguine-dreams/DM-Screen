@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useContext, useState } from 'react';
 import { DnDContext } from '../store/store';
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Pagination, getKeyValue} from "@nextui-org/react";
+import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Pagination} from "@nextui-org/react";
 
 import SpellCard from '../components/SpellCard';
 
