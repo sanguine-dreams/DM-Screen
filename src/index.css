@@ -31,4 +31,10 @@ code {
   background-size: cover;
   width: 100vw;
   height: 100vh;
+
+
 }
+ #root *{
+    font-size: 1.3rem;
+    color: brown;
+ }

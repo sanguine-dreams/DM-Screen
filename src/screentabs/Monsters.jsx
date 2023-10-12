@@ -64,7 +64,7 @@ function Monsters() {
 
         <TableBody>
           {monsters?.map((i) => (
-            <TableRow>
+            <TableRow key={i.slug}>
               <TableCell>{i.name}</TableCell>
               <TableCell>{i.cr}</TableCell>
               <TableCell>{i.type}</TableCell>

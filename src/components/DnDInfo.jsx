@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { DnDContext } from "../store/store";
 import { useState } from "react";
 import { api } from "../lib/axios";
+import db from "../lib/Pocketbase";
 
 function DndProvider({ children }) {
   const [spellCount, setSpellCount] = useState();
@@ -16,7 +17,8 @@ function DndProvider({ children }) {
   const [monsterFiltering, setMonsterFiltering] = useState({
     CR:false, search:""
   });
-  const [armorFiltering, setArmorFiltering] = useState(false)
+  const [armorFiltering, setArmorFiltering] = useState(false);
+  const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     api.get("/conditions/").then((response) => {
@@ -58,6 +60,13 @@ function DndProvider({ children }) {
     });
   }, [page, rowsPerPage, armorFiltering]);
 
+  // useEffect(() => {
+  //   db.get(`/collections/Notes/records?expand=CampaignId`).then((response) => {
+  //     setNotes(response.data.items)
+  //     console.log(notes)
+  //   })
+  // }, [])
+
   return (
     <DnDContext.Provider
       value={{
@@ -74,7 +83,8 @@ function DndProvider({ children }) {
         magicItems,
         monsterFiltering,
         setMonsterFiltering,
-        armorFiltering, setArmorFiltering
+        armorFiltering, setArmorFiltering,
+        notes, setNotes
       }}
     >
       {children}
