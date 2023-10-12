@@ -6,12 +6,18 @@ import EachNote from "../components/EachNote";
 import { DnDContext } from "../store/store";
 
 function Notes() {
-  const { notes, setNotes } = useContext(DnDContext);
-  const [newNote, setNewNote] = useState({ Title: "", Content: "" });
+const [newNote, setNewNote] = useState({Title: '', Content:''})
+  const [notes, setNotes ] = useState([]);
 
   async function handleCreate() {
-    await postNotes(newNote);
-    setNewNote({ Title: '', Content:''});
+    if(!newNote.Content || !newNote.Title){
+      alert('some data are empty')
+      return
+    }
+   const result = await postNotes(newNote);
+    setNotes([...notes, result]);
+  
+    setNewNote({Title: '', Content:''});
   }
 
   useEffect(() => {
@@ -20,21 +26,22 @@ function Notes() {
       setNotes(result);
     }
     fnn();
-  }, [notes]);
+  }, []);
   return (
     <div className="scale-x-[-1]">
       <h1>Notesss</h1>
 
-      {notes.map((note) => {
-        return <EachNote value={note} />;
+      {notes.map((note,i) => {
+        return <EachNote value={note}  key={i}/>;
       })}
 
       <div className={`m-4 border-2 border-red-900 rounded-md`}>
-        <button onClick={handleCreate}> confirm</button>
+     
         <Input
           type="text"
           variant="underlined"
           value={newNote.Title}
+          placeholder="Title"
           onValueChange={(e) => setNewNote({ ...newNote, Title: e})}
           required
         />
@@ -47,6 +54,7 @@ function Notes() {
           }
           required
         />
+               <button onClick={handleCreate}> confirm add</button>
       </div>
     </div>
   );

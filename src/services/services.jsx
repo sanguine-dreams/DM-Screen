@@ -8,19 +8,23 @@ return result
 }
 
 export async function postNotes(body){
-    await db.post(`/collections/Notes/records/`, {
+  return  (await db.post(`/collections/Notes/records/`, {
+        Title: body.Title,
+        Content: body.Content
+    })).data;
+
+}
+
+export async function deleteNote(id){
+    await db.delete(`collections/Notes/records/${id}`);
+
+}
+
+export async function updateNotes(body){
+    console.log(body)
+    await db.patch(`collections/Notes/records/${body.id}`, {
         Title: body.Title,
         Content: body.Content
     });
-
-}
-
-export async function deleteNote(){
-    await db.delete(``);
-
-}
-
-export async function updateNotes(){
-    await db.put(``);
 
 }
