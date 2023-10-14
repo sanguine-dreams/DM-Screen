@@ -19,7 +19,7 @@ function EquipmentCard({ equipment }) {
 
         <TableBody>
           {equipment.map((eq) => (
-            <TableRow>
+            <TableRow className="text-left">
               <TableCell>{eq.name}</TableCell>
               <TableCell>{eq.type}</TableCell>
               <TableCell>{eq.rarity}</TableCell>

@@ -4,9 +4,10 @@ import { Textarea, Input, Button } from "@nextui-org/react";
 import { getNotes, postNotes } from "../services/services";
 import EachNote from "../components/EachNote";
 import { DnDContext } from "../store/store";
+import { keys } from "../utils/keys";
 
 function Notes() {
-const [newNote, setNewNote] = useState({Title: '', Content:''})
+const [newNote, setNewNote] = useState({Title: '', Content:'', CampaignHead: window.localStorage.getItem(keys.cId)})
   const [notes, setNotes ] = useState([]);
 
   async function handleCreate() {
@@ -17,15 +18,16 @@ const [newNote, setNewNote] = useState({Title: '', Content:''})
    const result = await postNotes(newNote);
     setNotes([...notes, result]);
   
-    setNewNote({Title: '', Content:''});
+    setNewNote({Title: '', Content:'', CampaignHead: window.localStorage.getItem(keys.cId)});
   }
 
   useEffect(() => {
     async function fnn() {
-      const result = await getNotes();
+      const result = await getNotes(window.localStorage.getItem(keys.cId));
       setNotes(result);
     }
     fnn();
+    console.log(`cid: ${window.localStorage.getItem(keys.cId)}`)
   }, []);
   return (
     <div className="scale-x-[-1]">

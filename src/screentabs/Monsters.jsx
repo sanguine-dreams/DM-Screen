@@ -11,18 +11,19 @@ import {
   Chip,
   Pagination,
 } from "@nextui-org/react";
+import {Accordion, AccordionItem} from "@nextui-org/react";
 
 function Monsters() {
   const {
     monsters,
-    page,
-    rowsPerPage,
-    setPage,
+    pageMonster,
+    count,
+    setPageMonster,
     monsterFiltering,
     setMonsterFiltering,
   } = useContext(DnDContext);
 
-  // const pages = Math.ceil(spellCount / rowsPerPage);
+  const pages = Math.ceil(2435/ 49);
 
   function controlCR() {
     monsterFiltering.CR
@@ -43,9 +44,9 @@ function Monsters() {
               showControls
               showShadow
               color="secondary"
-              page={page}
-              total={10}
-              onChange={(page) => setPage(page)}
+              page={pageMonster}
+              total={pages}
+              onChange={(page) => setPageMonster(page)}
             />
           </div>
         }
@@ -53,7 +54,7 @@ function Monsters() {
           wrapper: "min-h-[222px]",
         }}
       >
-        <TableHeader>
+        <TableHeader >
           <TableColumn>Monster Name</TableColumn>
           <TableColumn>
             <button onClick={controlCR}>CR</button>
@@ -64,12 +65,13 @@ function Monsters() {
 
         <TableBody>
           {monsters?.map((i) => (
-            <TableRow key={i.slug}>
+            <TableRow  key={i.slug} className="text-left">
               <TableCell>{i.name}</TableCell>
               <TableCell>{i.cr}</TableCell>
               <TableCell>{i.type}</TableCell>
               <TableCell>{i.size}</TableCell>
             </TableRow>
+            
           ))}
         </TableBody>
       </Table>

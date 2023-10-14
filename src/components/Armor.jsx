@@ -36,7 +36,7 @@ import { DnDContext } from '../store/store';
   
           <TableBody>
             {armor.map((eq) => (
-              <TableRow>
+              <TableRow className="text-left">
                 <TableCell>{eq.name}</TableCell>
                 <TableCell>{eq.ac_string}</TableCell>
                 <TableCell>{eq.category}</TableCell>

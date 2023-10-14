@@ -3,7 +3,7 @@ import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Paginat
 import { DnDContext } from '../store/store';
   
   function Weapons({ weapons }) {
-    const { spells, page, setPage, rowsPerPage, setRowsPerPage, spellCount } =
+    const { spells, pageWeapons, setPageWeapons, rowsPerPage, setRowsPerPage, spellCount } =
     useContext(DnDContext);
 
     return (
@@ -19,9 +19,9 @@ import { DnDContext } from '../store/store';
               showControls
               showShadow
               color="secondary"
-              page={page}
+              page={pageWeapons}
               total={2}
-              onChange={(page) => setPage(page)}
+              onChange={(page) => setPageWeapons(page)}
             />
           </div>
         }
@@ -31,16 +31,23 @@ import { DnDContext } from '../store/store';
       >
           <TableHeader>
             <TableColumn>Name</TableColumn>
-            <TableColumn>Type</TableColumn>
-            <TableColumn>Rarity</TableColumn>
+            <TableColumn>Category</TableColumn>
+            <TableColumn>Damage</TableColumn>
+            <TableColumn>Properties</TableColumn>
+            <TableColumn>Cost</TableColumn>
           </TableHeader>
   
           <TableBody>
             {weapons.map((eq) => (
-              <TableRow>
+              <TableRow className="text-left">
                 <TableCell>{eq.name}</TableCell>
-                <TableCell>{eq.type}</TableCell>
-                <TableCell>{eq.rarity}</TableCell>
+                <TableCell>{eq.category}</TableCell>
+
+                <TableCell>{eq.damage_dice} {eq.damage_type}</TableCell>
+                <TableCell> {eq.properties} </TableCell>
+                
+
+                <TableCell>{eq.cost}</TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -3,8 +3,10 @@ import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Paginat
 import { DnDContext } from '../store/store';
   
   function MagicItems({ magicItems }) {
-    const { spells, page, setPage, rowsPerPage, setRowsPerPage, spellCount } =
+    const { count, pageMagicItems, setPageMagicItems} =
     useContext(DnDContext);
+
+    const pages = Math.ceil(1072 / 49);
 
     return (
       <div className="equipment-card flex flex-wrap "
@@ -19,9 +21,9 @@ import { DnDContext } from '../store/store';
               showControls
               showShadow
               color="secondary"
-              page={page}
-              total={10}
-              onChange={(page) => setPage(page)}
+              page={pageMagicItems}
+              total={pages}
+              onChange={(page) => setPageMagicItems(page)}
             />
           </div>
         }
@@ -33,14 +35,16 @@ import { DnDContext } from '../store/store';
             <TableColumn>Name</TableColumn>
             <TableColumn>Type</TableColumn>
             <TableColumn>Rarity</TableColumn>
+            <TableColumn>Attunement</TableColumn>
           </TableHeader>
   
           <TableBody>
             {magicItems.map((eq) => (
-              <TableRow>
+              <TableRow className="text-left">
                 <TableCell>{eq.name}</TableCell>
                 <TableCell>{eq.type}</TableCell>
                 <TableCell>{eq.rarity}</TableCell>
+                <TableCell>{eq.requires_attunement}</TableCell>
               </TableRow>
             ))}
           </TableBody>

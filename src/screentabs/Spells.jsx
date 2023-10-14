@@ -7,10 +7,10 @@ import SpellCard from '../components/SpellCard';
 
 
 export default function Spells() {
-  const { spells, page, setPage, rowsPerPage, setRowsPerPage, spellCount } =
+  const { spells, pageSpell, setPageSpell} =
     useContext(DnDContext);
 
-    const pages = Math.ceil(spellCount / rowsPerPage);
+    const pages = Math.ceil(1435 / 49);
 
   return (
     <Table 
@@ -23,9 +23,9 @@ export default function Spells() {
             showControls
             showShadow
             color="secondary"
-            page={page}
+            page={pageSpell}
             total={pages}
-            onChange={(page) => setPage(page)}
+            onChange={(page) => setPageSpell(page)}
           />
         </div>
       }
@@ -42,8 +42,8 @@ export default function Spells() {
       </TableHeader>
       <TableBody items={spells}>
         {(spell) => (
-          <TableRow key={spell.slug}>
-            <TableCell>{spell.name}</TableCell>
+          <TableRow key={spell.slug} className="text-left">
+            <TableCell className="text-left">{spell.name}</TableCell>
             <TableCell>{spell.level}</TableCell>
             <TableCell>{spell.casting_time.slice(0, 10)}</TableCell>
             <TableCell>{spell.duration}</TableCell>

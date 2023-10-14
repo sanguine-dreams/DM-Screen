@@ -5,20 +5,36 @@ import { api } from "../lib/axios";
 import db from "../lib/Pocketbase";
 
 function DndProvider({ children }) {
-  const [spellCount, setSpellCount] = useState();
+  const [count, setCounts] = useState({
+    Monster: 0,
+    Spell: 0,
+    MagicItems: 0,
+  });
+
+
+
   const [conditions, setConditions] = useState([]);
   const [spells, setSpells] = useState([]);
-  const [page, setPage] = useState(1);
-  const [rowsPerPage, setRowsPerPage] = useState(49);
+  const [pageSpell, setPageSpell] = useState(1);
+  const [pageMonster, setPageMonster] = useState(1);
+  const [pageMagicItems, setPageMagicItems] = useState(1);
+  const [pageWeapons, setPageWeapons] = useState(1);
   const [monsters, setMonsters] = useState([]);
   const [magicItems, setMagicItems] = useState([]);
   const [weapons, setWeapons] = useState([]);
   const [armor, setArmor] = useState([]);
   const [monsterFiltering, setMonsterFiltering] = useState({
-    CR:false, search:""
+    CR: false,
+    search: "",
   });
   const [armorFiltering, setArmorFiltering] = useState(false);
   const [notes, setNotes] = useState([]);
+  const [signInCreds, setSignInCreds] = useState({
+    email: "",
+    password: "",
+    username: "",
+    id: "",
+  });
 
   useEffect(() => {
     api.get("/conditions/").then((response) => {
@@ -26,46 +42,41 @@ function DndProvider({ children }) {
     });
   }, []);
   useEffect(() => {
-    api.get(`/spells/?page=${page}`).then((response) => {
-      setSpellCount(response.data.count);
+    api.get(`/spells/?page=${pageSpell}`).then((response) => {
+      setCounts({ ...count, Spell: response.data.count });
       setSpells(response.data.results);
     });
-  }, [page, rowsPerPage]);
+  }, [pageSpell]);
   useEffect(() => {
     api
       .get(
         `/monsters/${
           monsterFiltering.CR ? "?ordering=challenge_rating&" : ""
-        }?page=${page}`
+        }?page=${pageMonster}`
       )
       .then((response) => {
+        setCounts({ ...count, Monster: response.data.count });
         setMonsters(response.data.results);
       });
-  }, [monsterFiltering]);
+  }, [monsterFiltering, pageMonster]);
 
   useEffect(() => {
-    api.get(`/armor/${
-      armorFiltering ? "?ordering=category" : ""
-    }`).then((response) => {
-      setArmor(response.data.results);
-    });
+    api
+      .get(`/armor/${armorFiltering ? "?ordering=category" : ""}`)
+      .then((response) => {
+        setArmor(response.data.results);
+      });
 
-    api.get(`/weapons/?page=${page}`).then((response) => {
+    api.get(`/weapons/?page=${pageWeapons}`).then((response) => {
       setWeapons(response.data.results);
     });
 
-    api.get(`/magicitems/?page=${page}`).then((response) => {
-      
+    api.get(`/magicitems/?page=${pageMagicItems}`).then((response) => {
+      setCounts({ ...count, MagicItems: response.data.count });
       setMagicItems(response.data.results);
     });
-  }, [page, rowsPerPage, armorFiltering]);
+  }, [pageMagicItems, armorFiltering, pageWeapons]);
 
-  // useEffect(() => {
-  //   db.get(`/collections/Notes/records?expand=CampaignId`).then((response) => {
-  //     setNotes(response.data.items)
-  //     console.log(notes)
-  //   })
-  // }, [])
 
   return (
     <DnDContext.Provider
@@ -73,18 +84,26 @@ function DndProvider({ children }) {
         conditions,
         spells,
         monsters,
-        page,
-        rowsPerPage,
-        setRowsPerPage,
-        setPage,
-        spellCount,
+        count,
         weapons,
         armor,
         magicItems,
         monsterFiltering,
         setMonsterFiltering,
-        armorFiltering, setArmorFiltering,
-        notes, setNotes
+        armorFiltering,
+        setArmorFiltering,
+        notes,
+        setNotes,
+        signInCreds,
+        setSignInCreds,
+        pageWeapons,
+        setPageWeapons,
+        pageSpell,
+        setPageSpell,
+        pageMonster,
+        setPageMonster,
+        pageMagicItems,
+        setPageMagicItems,
       }}
     >
       {children}
