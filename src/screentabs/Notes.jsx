@@ -10,6 +10,7 @@ function Notes() {
 const [newNote, setNewNote] = useState({Title: '', Content:'', CampaignHead: window.localStorage.getItem(keys.cId)})
   const [notes, setNotes ] = useState([]);
 
+
   async function handleCreate() {
     if(!newNote.Content || !newNote.Title){
       alert('some data are empty')
@@ -25,6 +26,7 @@ const [newNote, setNewNote] = useState({Title: '', Content:'', CampaignHead: win
     async function fnn() {
       const result = await getNotes(window.localStorage.getItem(keys.cId));
       setNotes(result);
+    
     }
     fnn();
     console.log(`cid: ${window.localStorage.getItem(keys.cId)}`)

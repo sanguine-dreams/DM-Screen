@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { DnDContext } from "../store/store";
-import MonsterCard from "../components/MonsterCard";
 import {
   Table,
   TableHeader,
@@ -8,10 +7,13 @@ import {
   TableColumn,
   TableRow,
   TableCell,
-  Chip,
   Pagination,
+  Button,
 } from "@nextui-org/react";
-import {Accordion, AccordionItem} from "@nextui-org/react";
+import { Accordion, AccordionItem } from "@nextui-org/react";
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure} from "@nextui-org/react";
+
+import MonsterModal from "../components/MonsterModal";
 
 function Monsters() {
   const {
@@ -22,8 +24,16 @@ function Monsters() {
     monsterFiltering,
     setMonsterFiltering,
   } = useContext(DnDContext);
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const [modal, setModal] = useState(false);
+  const [renderMonster, setRenderMonster] = useState({});
 
-  const pages = Math.ceil(2435/ 49);
+  function handleModal(m) {
+    setRenderMonster(m);
+    onOpen()
+  }
+
+  const pages = Math.ceil(2435 / 49);
 
   function controlCR() {
     monsterFiltering.CR
@@ -54,7 +64,7 @@ function Monsters() {
           wrapper: "min-h-[222px]",
         }}
       >
-        <TableHeader >
+        <TableHeader>
           <TableColumn>Monster Name</TableColumn>
           <TableColumn>
             <button onClick={controlCR}>CR</button>
@@ -65,16 +75,31 @@ function Monsters() {
 
         <TableBody>
           {monsters?.map((i) => (
-            <TableRow  key={i.slug} className="text-left">
-              <TableCell>{i.name}</TableCell>
+            <TableRow key={i.slug} className="text-left">
+              <TableCell>
+                <Button onPress={() =>handleModal(i)}>{i.name}</Button>
+              </TableCell>
               <TableCell>{i.cr}</TableCell>
               <TableCell>{i.type}</TableCell>
               <TableCell>{i.size}</TableCell>
             </TableRow>
-            
           ))}
         </TableBody>
       </Table>
+
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Details</ModalHeader>
+              <ModalBody>
+              <MonsterModal monster={renderMonster} />
+              </ModalBody>
+             
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </div>
   );
 }

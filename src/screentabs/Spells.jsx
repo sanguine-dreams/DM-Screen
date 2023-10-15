@@ -11,6 +11,7 @@ export default function Spells() {
     useContext(DnDContext);
 
     const pages = Math.ceil(1435 / 49);
+    
 
   return (
     <Table 

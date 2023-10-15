@@ -30,8 +30,7 @@ export function Login() {
   }
 
   useEffect(()=>{
-
-  },[])
+window.localStorage.clear()  },[])
 
   
  

@@ -9,9 +9,9 @@ function Conditions() {
   return (
     <div className='h-full text-left'>
 
-      {conditions.map((condition) => <Accordion>
+      {conditions.map((condition,i) => <Accordion>
    
-      <AccordionItem key="1" aria-label="Accordion 1" title={`${condition.name}`}>
+      <AccordionItem key={i} aria-label="Accordion 1" title={`${condition.name}`}>
       {condition.desc}
       </AccordionItem>
     </Accordion>) }
