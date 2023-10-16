@@ -62,10 +62,10 @@ function Monsters() {
           </div>
         }
         classNames={{
-          wrapper: "min-h-[222px]",
+          wrapper: "min-h-[222px] table-wrapper",
         }}
       >
-        <TableHeader>
+        <TableHeader className="headddd">
           <TableColumn>Monster Name</TableColumn>
           <TableColumn>
             <button onClick={controlCR}>CR</button>

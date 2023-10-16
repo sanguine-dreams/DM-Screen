@@ -13,7 +13,6 @@ import { DnDContext } from '../store/store';
       >
         <Table
         
-        aria-label="Example table with client side pagination"
         bottomContent={
           <div className="flex w-full justify-center">
             <Pagination
@@ -28,7 +27,7 @@ import { DnDContext } from '../store/store';
           </div>
         }
         classNames={{
-          wrapper: "min-h-[222px]",
+          wrapper: "min-h-[222px] table-wrapper",
         }}
       >
           <TableHeader>

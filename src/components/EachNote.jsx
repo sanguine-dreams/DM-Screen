@@ -13,7 +13,7 @@ function EachNote({ value }) {
       <div className="m-4 border-2 border-brown rounded-md">
         <div className="flex flex-row justify-end">
           <Button
-            onClick={() => updateNotes(newNote)}
+            onClick={() => updateNotes(newNote, value.id)}
             isIconOnly
             color="danger"
             variant="light"

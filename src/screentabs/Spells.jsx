@@ -31,7 +31,7 @@ export default function Spells() {
         </div>
       }
       classNames={{
-        wrapper: "min-h-[222px]",
+        wrapper: "min-h-[222px] table-wrapper",
       }}
     >
       <TableHeader>
@@ -46,7 +46,7 @@ export default function Spells() {
           <TableRow key={spell.slug} className="text-left">
             <TableCell className="text-left">{spell.name}</TableCell>
             <TableCell>{spell.level}</TableCell>
-            <TableCell>{spell.casting_time.slice(0, 10)}</TableCell>
+            <TableCell >{spell.casting_time.slice(0, 10)}</TableCell>
             <TableCell>{spell.duration}</TableCell>
             <TableCell>{spell.range}</TableCell>
           </TableRow>

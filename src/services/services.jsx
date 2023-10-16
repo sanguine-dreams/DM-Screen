@@ -26,13 +26,13 @@ export async function postNotes(body) {
 
 export async function deleteNote(id) {
  
-  await db.delete(`/api/collections/notes/records${id}`);
+  await db.delete(`/api/collections/notes/records/${id}`);
 
 }
 
-export async function updateNotes(body) {
+export async function updateNotes(body, id) {
 
-  await db.patch(`/api/collections/notes/records${body.id}`, {
+  await db.patch(`/api/collections/notes/records/${id}`, {
     Title: body.Title,
     Content: body.Content,
   });

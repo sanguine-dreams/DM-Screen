@@ -19,8 +19,8 @@ import { DnDContext } from '../store/store';
         <Table
         
         aria-label="Example table with client side pagination"
-        classNames={{
-          wrapper: "min-h-[222px]",
+        classNames={{ 
+          wrapper: "min-h-[222px] table-wrapper",
         }}
       >
           <TableHeader>

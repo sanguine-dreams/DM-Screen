@@ -33,7 +33,7 @@ const [newNote, setNewNote] = useState({Title: '', Content:'', CampaignHead: win
   }, []);
   return (
     <div className="scale-x-[-1]">
-      <h1>DM Notes</h1>
+      <h1 className="py-3">DM Notes</h1>
 
       {notes.map((note,i) => {
         return <EachNote value={note}  key={i}/>;

@@ -74,7 +74,7 @@ function Player() {
   }, []);
   return (
     <>
-      <div className="flex flex-row justify-end p-2" >
+      <div className="flex flex-row justify-end  px-2 pt-3 pb-1 items-center" >
         <Button className="text-beige " variant="solid" color="danger" onPress={onOpen}>Add new Player Character</Button>
       </div>
 

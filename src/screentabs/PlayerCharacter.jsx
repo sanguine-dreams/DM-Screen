@@ -12,7 +12,7 @@ function PlayerCharacter({ player }) {
   const [newPlayer, setNewPlayer] = useState(player);
 
   return (
-    <div className="m-2 p-2 border-double border-2 border-brown rounded-md ">
+    <div className="characters m-2 p-2 border-double border-2 border-brown rounded-md ">
       <div className="flex flex-row justify-end">
         <Button
           onClick={() => updatePlayers(newPlayer)}

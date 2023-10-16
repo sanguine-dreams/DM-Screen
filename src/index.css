@@ -40,7 +40,7 @@ code {
 
 }
  #root *{
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 
  }
 
@@ -49,14 +49,18 @@ code {
  }
 
  table { 
-  background-image: url('/src/assets/background-2076335_1920.jpg');
+  
 } 
 
 th, td , tr{ 
   background-color: transparent;
   height: 4rem;
 } 
+thead th{
+  font-size: 1.3rem !important;
+  
 
+}
 
 tr:nth-child(even) { 
   background-color: rgba(255, 255, 255, 0.541); 
@@ -71,10 +75,12 @@ text-align: right;
 text-align: right;
 }
 
-input {
+.characters  input {
   font-family: 'Modesta-sub';
   margin: 20px 0 10px 0;
 }
+
+
 
 .taper {
   border-top: solid 3px transparent;
@@ -82,4 +88,15 @@ input {
   border-bottom: solid 3px #a52a2a;
   border-right: solid 315px transparent;
   margin: 5px 0px 5px 0px;
+}
+
+textarea {
+  font-family: 'Modesta-sub';
+}
+
+.table-wrapper{
+padding: 0!important;
+background-image: url('/src/assets/background-2076335_1920.jpg');
+padding: 4px;
+
 }

@@ -25,11 +25,11 @@ module.exports = {
             foreground: "#5C180D", 
             secondary: {
               DEFAULT: "#EFEAD4",
-              foreground: "#000000",
+              foreground: "#5C180D",
             },
             success: {
               DEFAULT: "#EFEAD4",
-              foreground: "#000000",
+              foreground: "#5C180D",
             },
             danger: {
               DEFAULT: "#5C180D",

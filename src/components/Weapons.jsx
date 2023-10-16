@@ -26,7 +26,7 @@ import { DnDContext } from '../store/store';
           </div>
         }
         classNames={{
-          wrapper: "min-h-[222px]",
+          wrapper: "min-h-[222px] table-wrapper",
         }}
       >
           <TableHeader>
@@ -46,7 +46,7 @@ import { DnDContext } from '../store/store';
                 <TableCell>{eq.category}</TableCell>
 
                 
-                <TableCell> {eq.properties} </TableCell>
+                <TableCell> {eq.properties?.map((e) => <p>{e}</p>)} </TableCell>
                 <TableCell>{eq.damage_dice} {eq.damage_type}</TableCell>
 
                 <TableCell>{eq.cost}</TableCell>
