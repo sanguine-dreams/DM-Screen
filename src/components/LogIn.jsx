@@ -35,7 +35,7 @@ window.localStorage.clear()  },[])
   
  
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
+    <div className="w-screen h-screen flex items-center justify-center font-[Modesto-sub] text-red">
       <form
         className="flex flex-col p-4 w-4/12 bg-red-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border border-gray-100"
         onSubmit={(e) =>handleSubmit(e)}
@@ -47,20 +47,20 @@ window.localStorage.clear()  },[])
           onChange={(e) =>
             setSignInCreds({ ...signInCreds, email: e.target.value })
           }
-          placeholder="enter email"
+          placeholder="Enter email"
         ></input>
 
 
         <input
           className="p-4 bg-transparent"
           type="password"
-          placeholder="enter password"
+          placeholder="Enter password"
           value={signInCreds.password}
           onChange={(e) =>
             setSignInCreds({ ...signInCreds, password: e.target.value })
           }
         ></input>
-        <button type="=submit">Sign in </button>
+        <button className="font-[Modesto-expanded] " type="=submit">Sign in </button>
       </form>
     </div>
   );

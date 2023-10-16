@@ -10,7 +10,7 @@ import { DnDContext } from '../store/store';
       <div className="equipment-card flex flex-wrap "
       >
         <Table
-        isStriped
+        
         aria-label="Example table with client side pagination"
         bottomContent={
           <div className="flex w-full justify-center">
@@ -18,7 +18,7 @@ import { DnDContext } from '../store/store';
               isCompact
               showControls
               showShadow
-              color="secondary"
+              color="default"
               page={pageWeapons}
               total={2}
               onChange={(page) => setPageWeapons(page)}
@@ -32,8 +32,10 @@ import { DnDContext } from '../store/store';
           <TableHeader>
             <TableColumn>Name</TableColumn>
             <TableColumn>Category</TableColumn>
-            <TableColumn>Damage</TableColumn>
+            
+
             <TableColumn>Properties</TableColumn>
+            <TableColumn>Damage</TableColumn>
             <TableColumn>Cost</TableColumn>
           </TableHeader>
   
@@ -43,9 +45,9 @@ import { DnDContext } from '../store/store';
                 <TableCell>{eq.name}</TableCell>
                 <TableCell>{eq.category}</TableCell>
 
-                <TableCell>{eq.damage_dice} {eq.damage_type}</TableCell>
-                <TableCell> {eq.properties} </TableCell>
                 
+                <TableCell> {eq.properties} </TableCell>
+                <TableCell>{eq.damage_dice} {eq.damage_type}</TableCell>
 
                 <TableCell>{eq.cost}</TableCell>
               </TableRow>

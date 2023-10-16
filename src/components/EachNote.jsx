@@ -10,23 +10,26 @@ function EachNote({ value }) {
 
   return (
     <div>
-      <div className="m-4 border-2 border-red-900 rounded-md">
-        <Button
-          onClick={() => updateNotes(newNote)}
-          isIconOnly
-          color=""
-          aria-label="Like"
-        >
-          <RiQuillPenFill />
-        </Button>
-        <Button
-          onClick={() => deleteNote(newNote.id)}
-          isIconOnly
-          color=""
-          aria-label="Take a photo"
-        >
-          <RiChatDeleteFill />
-        </Button>
+      <div className="m-4 border-2 border-brown rounded-md">
+        <div className="flex flex-row justify-end">
+          <Button
+            onClick={() => updateNotes(newNote)}
+            isIconOnly
+            color="danger"
+            variant="light"
+    
+          >
+            <RiQuillPenFill />
+          </Button>
+          <Button
+            onClick={() => deleteNote(newNote.id)}
+            isIconOnly
+            color="danger"
+            variant="light"
+          >
+            <RiChatDeleteFill />
+          </Button>
+        </div>
 
         <Input
           type="text"

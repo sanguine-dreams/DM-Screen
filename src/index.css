@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  font-family: 'Modesto Condesed' , 'Modesto expanded';
+  font-family: 'Modesto-Condesed' , 'Modesto-expanded' , 'Modesto-sub';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,9 +21,14 @@ code {
 }
 
 @font-face {
-  font-family: 'Modesto expanded';
+  font-family: 'Modesto-expanded';
   src: url('../src/assets/fonts/modesto-expanded.ttf');
 }
+@font-face {
+  font-family: 'Modesto-sub';
+  src: url('../src/assets/fonts/modesto-sub.ttf');
+}
+
 
 
 #root {
@@ -36,5 +41,45 @@ code {
 }
  #root *{
     font-size: 1.3rem;
-    color: brown;
+
  }
+
+ .tab-content-left ,  .tab-content, .active{
+  background-image: url('/src/assets/background-2076335_1920.jpg');
+ }
+
+ table { 
+  background-image: url('/src/assets/background-2076335_1920.jpg');
+} 
+
+th, td , tr{ 
+  background-color: transparent;
+  height: 4rem;
+} 
+
+
+tr:nth-child(even) { 
+  background-color: rgba(255, 255, 255, 0.541); 
+} 
+
+
+.my-align-right label{
+width: 100%;
+text-align: right;
+}
+.my-align-right input{
+text-align: right;
+}
+
+input {
+  font-family: 'Modesta-sub';
+  margin: 20px 0 10px 0;
+}
+
+.taper {
+  border-top: solid 3px transparent;
+  border-left: solid 315px #a52a2a;
+  border-bottom: solid 3px #a52a2a;
+  border-right: solid 315px transparent;
+  margin: 5px 0px 5px 0px;
+}

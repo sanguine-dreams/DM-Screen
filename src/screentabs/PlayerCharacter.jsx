@@ -8,69 +8,72 @@ import { LuEyeOff } from "react-icons/lu";
 import { LuMoon } from "react-icons/lu";
 import { updatePlayers, deletePlayer } from "../services/services";
 
-
 function PlayerCharacter({ player }) {
-const [newPlayer, setNewPlayer] = useState(player);
+  const [newPlayer, setNewPlayer] = useState(player);
 
   return (
-    <div>
-      <Button onClick={() => updatePlayers(newPlayer)}
-        isIconOnly color="" aria-label="Like">
+    <div className="m-2 p-2 border-double border-2 border-brown rounded-md ">
+      <div className="flex flex-row justify-end">
+        <Button
+          onClick={() => updatePlayers(newPlayer)}
+          isIconOnly
+          color="danger"
+          variant="light"
+        >
           <RiQuillPenFill />
         </Button>
-        <Button 
-        onClick={() => deletePlayer(newPlayer.id)}
-        isIconOnly color="" aria-label="Take a photo">
+        <Button
+          onClick={() => deletePlayer(newPlayer.id)}
+          isIconOnly
+          color="danger"
+          variant="light"
+        >
           <RiChatDeleteFill />
         </Button>
-      <div>
-        <Input
-          variant="underlined"
-          type="text"
-          label="Name"
-          defaultValue={newPlayer.Name}
-          className="max-w-xs"
-          onValueChange={(e) =>
-            setNewPlayer({ ...newPlayer, Name: e })
-          }
-        />
-        <div className="flex flex-row">
-          <Input
-            variant="underlined"
-            type="text"
-            label="Race"
-            defaultValue={newPlayer.Race}
-            className="w-2/12"
-            onValueChange={(e) =>
-              setNewPlayer({ ...newPlayer, Race: e })
-            }
-          />
-          <Input
-            variant="underlined"
-            type="text"
-            label="Class"
-            defaultValue={newPlayer.Class}
-            className="w-2/12"
-            onValueChange={(e) =>
-              setNewPlayer({ ...newPlayer, Class: e })
-            }
-          />
-        </div>
       </div>
-      <div className="flex">
-        <div className="flex flex-col">
+      <div className=" flex flex-row ">
+        <div>
           <Input
+            color="danger"
+            variant="underlined"
+            type="text"
+            label="Name"
+            defaultValue={newPlayer.Name}
+            className="max-w-xs "
+            onValueChange={(e) => setNewPlayer({ ...newPlayer, Name: e })}
+          />
+          <div className="flex flex-row justify-start">
+            <Input
+              color="danger"
+              variant="underlined"
+              type="text"
+              label="Race"
+              defaultValue={newPlayer.Race}
+              className="w-6/12"
+              onValueChange={(e) => setNewPlayer({ ...newPlayer, Race: e })}
+            />
+            <Input
+              color="danger"
+              variant="underlined"
+              type="text"
+              label="Class"
+              defaultValue={newPlayer.Class}
+              className="w-6/12"
+              onValueChange={(e) => setNewPlayer({ ...newPlayer, Class: e })}
+            />
+          </div>
+        </div>
+        <div className="flex flex-col content-between">
+          <Input
+            color="danger"
             variant="underlined"
             type="text"
             label="Walk Speed"
             defaultValue={newPlayer.WalkSpeed}
-            className="max-w-xs"
-            onValueChange={(e) =>
-              setNewPlayer({ ...newPlayer, WalkSpeed: e })
-            }
+            className="max-w-xs my-align-right"
+            onValueChange={(e) => setNewPlayer({ ...newPlayer, WalkSpeed: e })}
           />
           <Switch
-            
             size="lg"
             color="success"
             isSelected={newPlayer.DarkVision}
@@ -85,66 +88,61 @@ const [newPlayer, setNewPlayer] = useState(player);
             Darkvision
           </Switch>
         </div>
-        <div className="grid grid-rows-2 grid-flow-col gap-4">
+
+        <div className="grid grid-rows-2 grid-flow-col place-items-center ">
           <Input
+            color="danger"
             variant="underlined"
             type="text"
             label="Wis"
-            defaultValue={newPlayer.wis}
-            className="w-1/2"
-            onValueChange={(e) =>
-              setNewPlayer({ ...newPlayer, wis: e })
-            }
+            defaultValue={newPlayer.WIS}
+            className="w-1/2 "
+            onValueChange={(e) => setNewPlayer({ ...newPlayer, wis: e })}
           />
           <Input
+            color="danger"
             variant="underlined"
             type="text"
             label="Int"
-            defaultValue={newPlayer.int}
+            defaultValue={newPlayer.INT}
             className="w-1/2"
-            onValueChange={(e) =>
-              setNewPlayer({ ...newPlayer, int: e })
-            }
+            onValueChange={(e) => setNewPlayer({ ...newPlayer, int: e })}
           />
           <Input
+            color="danger"
             variant="underlined"
             type="text"
             label="Cha"
-            defaultValue={newPlayer.cha}
+            defaultValue={newPlayer.CHA}
             className="w-1/2"
-            onValueChange={(e) =>
-              setNewPlayer({ ...newPlayer, cha: e })
-            }
+            onValueChange={(e) => setNewPlayer({ ...newPlayer, cha: e })}
           />
           <Input
+            color="danger"
             variant="underlined"
             type="text"
             label="Con"
-            defaultValue={newPlayer.con}
+            defaultValue={newPlayer.CON}
             className="w-1/2"
-            onValueChange={(e) =>
-              setNewPlayer({ ...newPlayer, con: e })
-            }
+            onValueChange={(e) => setNewPlayer({ ...newPlayer, con: e })}
           />
           <Input
+            color="danger"
             variant="underlined"
             type="text"
             label="Str"
-            defaultValue={newPlayer.str}
+            defaultValue={newPlayer.STR}
             className="w-1/2"
-            onValueChange={(e) =>
-              setNewPlayer({ ...newPlayer, str: e })
-            }
+            onValueChange={(e) => setNewPlayer({ ...newPlayer, str: e })}
           />
           <Input
+            color="danger"
             variant="underlined"
             type="text"
             label="Dex"
-            defaultValue={newPlayer.dex}
+            defaultValue={newPlayer.DEX}
             className="w-1/2"
-            onValueChange={(e) =>
-              setNewPlayer({ ...newPlayer, dex: e })
-            }
+            onValueChange={(e) => setNewPlayer({ ...newPlayer, dex: e })}
           />
         </div>
       </div>

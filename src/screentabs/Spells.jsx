@@ -15,7 +15,7 @@ export default function Spells() {
 
   return (
     <Table 
-    isStriped
+    
       aria-label="Example table with client side pagination"
       bottomContent={
         <div className="flex w-full justify-center">

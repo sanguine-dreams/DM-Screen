@@ -37,7 +37,6 @@ function Player() {
   const [players, setPlayers] = useState([]);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-
   async function handleCreate() {
     const result = await postPlayers(newCharacter);
 
@@ -69,14 +68,15 @@ function Player() {
     async function fnn() {
       const result = await getPlayers(window.localStorage.getItem(keys.cId));
       setPlayers(result);
-
     }
     fnn();
-    console.log(`cid in players: ${window.localStorage.getItem(keys.cId)}`);
+    console.log(players);
   }, []);
   return (
     <>
-      <Button onPress={onOpen}>Add new Player Character</Button>
+      <div className="flex flex-row justify-end p-2" >
+        <Button className="text-beige " variant="solid" color="danger" onPress={onOpen}>Add new Player Character</Button>
+      </div>
 
       {players.map((player, i) => {
         return <PlayerCharacter player={player} key={i} />;
@@ -93,6 +93,7 @@ function Player() {
                 <div>
                   <div>
                     <Input
+                  
                       variant="underlined"
                       type="text"
                       label="Name"

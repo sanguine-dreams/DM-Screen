@@ -45,10 +45,11 @@ function Monsters() {
   return (
     <div className="scale-x-[-1]">
       <Table
-        isStriped
-        aria-label="Example table with client side pagination"
+      className=" bg-blue-200"
+        
+       
         bottomContent={
-          <div className="flex w-full justify-center">
+          <div className="flex w-full justify-center bg-red-200">
             <Pagination
               isCompact
               showControls
@@ -77,7 +78,7 @@ function Monsters() {
           {monsters?.map((i) => (
             <TableRow key={i.slug} className="text-left">
               <TableCell>
-                <Button onPress={() =>handleModal(i)}>{i.name}</Button>
+                <Button variant="light" className="text-brown" onPress={() =>handleModal(i)}>{i.name}</Button>
               </TableCell>
               <TableCell>{i.cr}</TableCell>
               <TableCell>{i.type}</TableCell>

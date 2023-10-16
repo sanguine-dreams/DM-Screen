@@ -7,12 +7,13 @@ function Conditions() {
 
   const {conditions} = useContext(DnDContext);
   return (
-    <div className='h-full text-left'>
+    <div className='h-full text-left font-[Modesto-expanded]'>
 
       {conditions.map((condition,i) => <Accordion>
    
-      <AccordionItem key={i} aria-label="Accordion 1" title={`${condition.name}`}>
-      {condition.desc}
+      <AccordionItem  key={i}  title={`${condition.name}`}>
+        <div className='taper'></div>
+      {condition.desc.slice(1, condition.desc.length)}
       </AccordionItem>
     </Accordion>) }
 

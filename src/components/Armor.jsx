@@ -17,7 +17,7 @@ import { DnDContext } from '../store/store';
       <div className="equipment-card flex flex-wrap "
       >
         <Table
-        isStriped
+        
         aria-label="Example table with client side pagination"
         classNames={{
           wrapper: "min-h-[222px]",

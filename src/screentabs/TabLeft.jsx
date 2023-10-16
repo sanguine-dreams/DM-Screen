@@ -20,7 +20,7 @@ function TabLeft({ tabs }) {
           </button>
         ))}
       </div>
-      <div className="tab-content-left w-[48vw] bg-orange-100 overflow-y-scroll h-[91vh] scale-x-[-1]">
+      <div  className="tab-content-left w-[48vw] bg-orange-100 overflow-y-scroll h-[91vh] scale-x-[-1]">
         {tabs[activeTab].content}
       </div>
     </div>

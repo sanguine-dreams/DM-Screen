@@ -48,20 +48,20 @@ function HomePage() {
 
 
   return (
-    <div className="home-page flex flex-col p-6 gap-4">
+    <div className="home-page flex flex-col p-6 gap-4 text-red">
       <Link to="/">
-        <Button variant="ghost" >
+        <Button variant="solid" color="danger">
           Log Out
         </Button>
       </Link>
-      <Button onPress={onOpen} variant="shadow">
+      <Button onPress={onOpen} variant="shadow" color="ghost" className="w-4/12">
         Create Campaign
       </Button>
 
       <div className=" flex flex-col gap-4">
 
       {campaigns.map((campaign) => 
-       (<Button variant="solid" onClick={() => campaignChoice(campaign.id)}>{campaign.Title} </Button>) 
+       (<Button className="h-[4rem] w-4/12 bg-brown-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-100 border border-gray-100" variant="" onClick={() => campaignChoice(campaign.id)}>{campaign.Title} </Button>) 
       )}
 
       </div>

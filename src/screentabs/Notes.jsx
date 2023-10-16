@@ -33,13 +33,13 @@ const [newNote, setNewNote] = useState({Title: '', Content:'', CampaignHead: win
   }, []);
   return (
     <div className="scale-x-[-1]">
-      <h1>Notesss</h1>
+      <h1>DM Notes</h1>
 
       {notes.map((note,i) => {
         return <EachNote value={note}  key={i}/>;
       })}
 
-      <div className={`m-4 border-2 border-red-900 rounded-md`}>
+      <div className={`m-4 border-2 border-brown rounded-md`}>
      
         <Input
           type="text"
