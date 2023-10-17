@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useState } from "react";
 import { Textarea, Input, Button } from "@nextui-org/react";
 import { RiQuillPenFill } from "react-icons/ri";
 import { RiChatDeleteFill } from "react-icons/ri";
-import { updateNotes, deleteNote } from "../services/services";
 
-function EachNote({ value , handleDelete, handleUpdate }) {
+function EachNote({ value, handleDelete, handleUpdate }) {
   const [newNote, setNewNote] = useState(value);
-
 
   return (
     <div>
@@ -18,7 +15,6 @@ function EachNote({ value , handleDelete, handleUpdate }) {
             isIconOnly
             color="danger"
             variant="light"
-    
           >
             <RiQuillPenFill />
           </Button>

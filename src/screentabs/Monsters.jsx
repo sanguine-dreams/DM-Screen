@@ -10,7 +10,6 @@ import {
   Pagination,
   Button,
 } from "@nextui-org/react";
-import { Accordion, AccordionItem } from "@nextui-org/react";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure} from "@nextui-org/react";
 
 import MonsterModal from "../components/MonsterModal";
@@ -25,7 +24,6 @@ function Monsters() {
     setMonsterFiltering,
   } = useContext(DnDContext);
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const [modal, setModal] = useState(false);
   const [renderMonster, setRenderMonster] = useState({});
 
   function handleModal(m) {

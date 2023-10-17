@@ -1,16 +1,21 @@
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Pagination} from "@nextui-org/react";
-  import { useContext, useState } from 'react';
-import { DnDContext } from '../store/store';
-  
-  function Weapons({ weapons }) {
-    const { spells, pageWeapons, setPageWeapons, rowsPerPage, setRowsPerPage, spellCount } =
-    useContext(DnDContext);
+import {
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+  Pagination,
+} from "@nextui-org/react";
+import { useContext } from "react";
+import { DnDContext } from "../store/store";
 
-    return (
-      <div className="equipment-card flex flex-wrap "
-      >
-        <Table
-        
+function Weapons({ weapons }) {
+  const { pageWeapons, setPageWeapons } = useContext(DnDContext);
+
+  return (
+    <div className="equipment-card flex flex-wrap ">
+      <Table
         aria-label="Example table with client side pagination"
         bottomContent={
           <div className="flex w-full justify-center">
@@ -29,34 +34,38 @@ import { DnDContext } from '../store/store';
           wrapper: "min-h-[222px] table-wrapper",
         }}
       >
-          <TableHeader>
-            <TableColumn>Name</TableColumn>
-            <TableColumn>Category</TableColumn>
-            
+        <TableHeader>
+          <TableColumn>Name</TableColumn>
+          <TableColumn>Category</TableColumn>
 
-            <TableColumn>Properties</TableColumn>
-            <TableColumn>Damage</TableColumn>
-            <TableColumn>Cost</TableColumn>
-          </TableHeader>
-  
-          <TableBody>
-            {weapons.map((eq) => (
-              <TableRow className="text-left">
-                <TableCell>{eq.name}</TableCell>
-                <TableCell>{eq.category}</TableCell>
+          <TableColumn>Properties</TableColumn>
+          <TableColumn>Damage</TableColumn>
+          <TableColumn>Cost</TableColumn>
+        </TableHeader>
 
-                
-                <TableCell> {eq.properties?.map((e) => <p>{e}</p>)} </TableCell>
-                <TableCell>{eq.damage_dice} {eq.damage_type}</TableCell>
+        <TableBody>
+          {weapons.map((eq) => (
+            <TableRow className="text-left">
+              <TableCell>{eq.name}</TableCell>
+              <TableCell>{eq.category}</TableCell>
 
-                <TableCell>{eq.cost}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-    );
-  }
-  
-  export default Weapons;
-  
+              <TableCell>
+                {" "}
+                {eq.properties?.map((e) => (
+                  <p>{e}</p>
+                ))}{" "}
+              </TableCell>
+              <TableCell>
+                {eq.damage_dice} {eq.damage_type}
+              </TableCell>
+
+              <TableCell>{eq.cost}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
+}
+
+export default Weapons;

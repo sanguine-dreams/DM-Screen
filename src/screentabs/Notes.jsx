@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Textarea, Input, Button } from "@nextui-org/react";
+import { Textarea, Input } from "@nextui-org/react";
 import {
   deleteNote,
   getNotes,
@@ -8,7 +8,6 @@ import {
   updateNotes,
 } from "../services/services";
 import EachNote from "../components/EachNote";
-import { DnDContext } from "../store/store";
 import { keys } from "../utils/keys";
 
 function Notes() {
@@ -35,8 +34,8 @@ function Notes() {
       alert("some data are empty");
       return;
     }
-     await postNotes(newNote);
-     fetchNotes();
+    await postNotes(newNote);
+    fetchNotes();
     setNewNote({
       Title: "",
       Content: "",
@@ -58,7 +57,14 @@ function Notes() {
       <h1 className="py-3">DM Notes</h1>
 
       {notes.map((note, i) => {
-        return <EachNote value={note} handleDelete={handleDelete} handleUpdate={handleUpdate} key={i} />;
+        return (
+          <EachNote
+            value={note}
+            handleDelete={handleDelete}
+            handleUpdate={handleUpdate}
+            key={i}
+          />
+        );
       })}
 
       <div className={`m-4 border-2 border-brown rounded-md`}>

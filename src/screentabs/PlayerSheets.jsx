@@ -2,10 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { keys } from "../utils/keys";
 import { useEffect } from "react";
-import { Textarea, Input, Button } from "@nextui-org/react";
-import { Switch } from "@nextui-org/react";
-import { LuEyeOff } from "react-icons/lu";
-import { LuMoon } from "react-icons/lu";
+import { Input, Button } from "@nextui-org/react";
+
 import {
   deletePlayer,
   getPlayers,
@@ -21,8 +19,6 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import PlayerCharacter from "./PlayerCharacter";
-import { useContext } from "react";
-import { DnDContext } from "../store/store";
 
 function Player() {
   const [newCharacter, setNewCharacter] = useState({
@@ -41,11 +37,10 @@ function Player() {
   });
   const [players, setPlayers] = useState([]);
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
-  const [toggle, setToggle] = useState(false);
 
   async function handleDelete(id) {
     deletePlayer(id);
-    alert('Player Deleted');
+    alert("Player Deleted");
     setPlayers((prev) => prev.filter((x) => x.id !== id));
   }
 
@@ -71,7 +66,7 @@ function Player() {
       WalkSpeed: "",
       Notes: "",
     });
-fetchPlayers();
+    fetchPlayers();
     onClose();
   }
 

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { DnDContext } from '../store/store';
-import ConditionCard from '../components/ConditionCard';
 import {Accordion, AccordionItem} from "@nextui-org/react";
 
 function Conditions() {

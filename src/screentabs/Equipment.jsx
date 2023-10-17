@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import { DnDContext } from '../store/store';
-import EquipmentCard from '../components/EquipmentCard';
 import {Accordion, AccordionItem} from "@nextui-org/react";
 import MagicItems from '../components/MagicItems';
 import Weapons from '../components/Weapons';

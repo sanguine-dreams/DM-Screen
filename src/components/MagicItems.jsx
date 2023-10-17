@@ -1,18 +1,23 @@
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Pagination} from "@nextui-org/react";
-  import { useContext, useState } from 'react';
-import { DnDContext } from '../store/store';
-  
-  function MagicItems({ magicItems }) {
-    const { count, pageMagicItems, setPageMagicItems} =
-    useContext(DnDContext);
+import {
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+  Pagination,
+} from "@nextui-org/react";
+import { useContext } from "react";
+import { DnDContext } from "../store/store";
 
-    const pages = Math.ceil(1072 / 49);
+function MagicItems({ magicItems }) {
+  const { pageMagicItems, setPageMagicItems } = useContext(DnDContext);
 
-    return (
-      <div className="equipment-card flex flex-wrap "
-      >
-        <Table
-        
+  const pages = Math.ceil(1072 / 49);
+
+  return (
+    <div className="equipment-card flex flex-wrap ">
+      <Table
         bottomContent={
           <div className="flex w-full justify-center">
             <Pagination
@@ -30,27 +35,26 @@ import { DnDContext } from '../store/store';
           wrapper: "min-h-[222px] table-wrapper",
         }}
       >
-          <TableHeader>
-            <TableColumn>Name</TableColumn>
-            <TableColumn>Type</TableColumn>
-            <TableColumn>Rarity</TableColumn>
-            <TableColumn>Attunement</TableColumn>
-          </TableHeader>
-  
-          <TableBody>
-            {magicItems.map((eq) => (
-              <TableRow className="text-left">
-                <TableCell>{eq.name}</TableCell>
-                <TableCell>{eq.type}</TableCell>
-                <TableCell>{eq.rarity}</TableCell>
-                <TableCell>{eq.requires_attunement}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-    );
-  }
-  
-  export default MagicItems;
-  
+        <TableHeader>
+          <TableColumn>Name</TableColumn>
+          <TableColumn>Type</TableColumn>
+          <TableColumn>Rarity</TableColumn>
+          <TableColumn>Attunement</TableColumn>
+        </TableHeader>
+
+        <TableBody>
+          {magicItems.map((eq) => (
+            <TableRow className="text-left">
+              <TableCell>{eq.name}</TableCell>
+              <TableCell>{eq.type}</TableCell>
+              <TableCell>{eq.rarity}</TableCell>
+              <TableCell>{eq.requires_attunement}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
+}
+
+export default MagicItems;

@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { DnDContext } from "../store/store";
 import { useState } from "react";
 import { api } from "../lib/axios";
-import db from "../lib/Pocketbase";
 
 function DndProvider({ children }) {
   const [count, setCounts] = useState({
@@ -10,8 +9,6 @@ function DndProvider({ children }) {
     Spell: 0,
     MagicItems: 0,
   });
-
-
 
   const [conditions, setConditions] = useState([]);
   const [spells, setSpells] = useState([]);
@@ -76,7 +73,6 @@ function DndProvider({ children }) {
       setMagicItems(response.data.results);
     });
   }, [pageMagicItems, armorFiltering, pageWeapons]);
-
 
   return (
     <DnDContext.Provider

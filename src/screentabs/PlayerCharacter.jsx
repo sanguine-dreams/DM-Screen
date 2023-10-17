@@ -1,18 +1,10 @@
 import { RiQuillPenFill } from "react-icons/ri";
 import { RiChatDeleteFill } from "react-icons/ri";
-import React, { useState, useEffect } from "react";
-import { keys } from "../utils/keys";
+import React, { useState } from "react";
 import { Input, Button } from "@nextui-org/react";
-import { Switch } from "@nextui-org/react";
-import { LuEyeOff } from "react-icons/lu";
-import { LuMoon } from "react-icons/lu";
-import { updatePlayers, deletePlayer, getPlayers } from "../services/services";
 
 function PlayerCharacter({ player, handleDelete, handleUpdate }) {
   const [newPlayer, setNewPlayer] = useState(player);
-
-
-
 
   return (
     <div className="characters m-2 p-2 pb-4 border-double border-2 border-brown rounded-md ">
