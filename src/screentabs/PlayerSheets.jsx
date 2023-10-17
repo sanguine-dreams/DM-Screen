@@ -6,7 +6,12 @@ import { Textarea, Input, Button } from "@nextui-org/react";
 import { Switch } from "@nextui-org/react";
 import { LuEyeOff } from "react-icons/lu";
 import { LuMoon } from "react-icons/lu";
-import { getPlayers, postPlayers } from "../services/services";
+import {
+  deletePlayer,
+  getPlayers,
+  postPlayers,
+  updatePlayers,
+} from "../services/services";
 import {
   Modal,
   ModalContent,
@@ -35,10 +40,22 @@ function Player() {
     Notes: "",
   });
   const [players, setPlayers] = useState([]);
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+  const [toggle, setToggle] = useState(false);
+
+  async function handleDelete(id) {
+    deletePlayer(id);
+    alert('Player Deleted');
+    setPlayers((prev) => prev.filter((x) => x.id !== id));
+  }
+
+  function handleUpdate(body) {
+    updatePlayers(body);
+    fetchPlayers();
+  }
 
   async function handleCreate() {
-    const result = await postPlayers(newCharacter);
+    await postPlayers(newCharacter);
 
     setNewCharacter({
       Name: "",
@@ -54,159 +71,190 @@ function Player() {
       WalkSpeed: "",
       Notes: "",
     });
-    onOpen();
+fetchPlayers();
+    onClose();
   }
 
-  const toggleDarkVision = () => {
-    setNewCharacter({
-      ...newCharacter,
-      DarkVision: !newCharacter.DarkVision, // Toggle the value
-    });
-  };
-
   useEffect(() => {
-    async function fnn() {
-      const result = await getPlayers(window.localStorage.getItem(keys.cId));
-      setPlayers(result);
-    }
-    fnn();
-    console.log(players);
+    fetchPlayers();
   }, []);
+
+  const fetchPlayers = async () => {
+    console.log("calls service");
+    const result = await getPlayers(window.localStorage.getItem(keys.cId));
+    console.log("finishes service");
+    setPlayers(result);
+  };
   return (
     <>
-      <div className="flex flex-row justify-end  px-2 pt-3 pb-1 items-center" >
-        <Button className="text-beige " variant="solid" color="danger" onPress={onOpen}>Add new Player Character</Button>
+      <div className="flex flex-row justify-end  px-2 pt-3 pb-1 items-center">
+        <Button
+          className="text-beige "
+          variant="solid"
+          color="danger"
+          onPress={onOpen}
+        >
+          Add new Player Character
+        </Button>
       </div>
 
       {players.map((player, i) => {
-        return <PlayerCharacter player={player} key={i} />;
+        return (
+          <PlayerCharacter
+            player={player}
+            handleDelete={handleDelete}
+            handleUpdate={handleUpdate}
+            key={i}
+          />
+        );
       })}
 
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal
+        className="bg-orange-100 "
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+      >
         <ModalContent>
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Modal Title
+                Add New Character
               </ModalHeader>
               <ModalBody>
-                <div>
+                <div className=" flex flex-row ">
                   <div>
                     <Input
-                  
+                      color="danger"
                       variant="underlined"
                       type="text"
                       label="Name"
-                      value={newCharacter.Name}
-                      className="max-w-xs"
+                      defaultValue={newCharacter.Name}
+                      className="max-w-xs "
                       onValueChange={(e) =>
                         setNewCharacter({ ...newCharacter, Name: e })
                       }
                     />
-                    <div className="flex flex-row">
+                    <div className="flex flex-row justify-start">
                       <Input
+                        color="danger"
                         variant="underlined"
                         type="text"
                         label="Race"
-                        value={newCharacter.Race}
-                        className="w-2/12"
+                        defaultValue={newCharacter.Race}
+                        className="w-6/12"
                         onValueChange={(e) =>
                           setNewCharacter({ ...newCharacter, Race: e })
                         }
                       />
                       <Input
+                        color="danger"
                         variant="underlined"
                         type="text"
                         label="Class"
-                        value={newCharacter.Class}
-                        className="w-2/12"
+                        defaultValue={newCharacter.Class}
+                        className="w-6/12"
                         onValueChange={(e) =>
                           setNewCharacter({ ...newCharacter, Class: e })
                         }
                       />
                     </div>
                   </div>
-                  <div className="flex">
-                    <div className="flex flex-col">
-                      <Input
-                        variant="underlined"
-                        type="text"
-                        label="Walk Speed"
-                        value={newCharacter.WalkSpeed}
-                        className="max-w-xs"
-                        onValueChange={(e) =>
-                          setNewCharacter({ ...newCharacter, WalkSpeed: e })
-                        }
-                      />
-                      <Switch
-                        isSelected={newCharacter.DarkVision}
-                        onValueChange={toggleDarkVision}
-                      >
-                        Darkvision
-                      </Switch>
-                    </div>
-                    <div className="grid grid-rows-2 grid-flow-col gap-4">
-                      <Input
-                        variant="underlined"
-                        type="text"
-                        label="Wis"
-                        value={newCharacter.wis}
-                        className="w-1/2"
-                        onValueChange={(e) =>
-                          setNewCharacter({ ...newCharacter, wis: e })
-                        }
-                      />
-                      <Input
-                        variant="underlined"
-                        type="text"
-                        label="Int"
-                        value={newCharacter.int}
-                        className="w-1/2"
-                        onValueChange={(e) =>
-                          setNewCharacter({ ...newCharacter, int: e })
-                        }
-                      />
-                      <Input
-                        variant="underlined"
-                        type="text"
-                        label="Cha"
-                        value={newCharacter.cha}
-                        className="w-1/2"
-                        onValueChange={(e) =>
-                          setNewCharacter({ ...newCharacter, cha: e })
-                        }
-                      />
-                      <Input
-                        variant="underlined"
-                        type="text"
-                        label="Con"
-                        value={newCharacter.con}
-                        className="w-1/2"
-                        onValueChange={(e) =>
-                          setNewCharacter({ ...newCharacter, con: e })
-                        }
-                      />
-                      <Input
-                        variant="underlined"
-                        type="text"
-                        label="Str"
-                        value={newCharacter.str}
-                        className="w-1/2"
-                        onValueChange={(e) =>
-                          setNewCharacter({ ...newCharacter, str: e })
-                        }
-                      />
-                      <Input
-                        variant="underlined"
-                        type="text"
-                        label="Dex"
-                        value={newCharacter.dex}
-                        className="w-1/2"
-                        onValueChange={(e) =>
-                          setNewCharacter({ ...newCharacter, dex: e })
-                        }
-                      />
-                    </div>
+                  <div className="flex flex-col content-between gap-4">
+                    <Input
+                      color="danger"
+                      variant="underlined"
+                      type="text"
+                      label="Walk Speed"
+                      defaultValue={newCharacter.WalkSpeed}
+                      className="max-w-xs my-align-right"
+                      onValueChange={(e) =>
+                        setNewCharacter({ ...newCharacter, WalkSpeed: e })
+                      }
+                    />
+
+                    <Button
+                      className="text-brown"
+                      variant="light"
+                      onClick={() =>
+                        setNewCharacter({
+                          ...newCharacter,
+                          DarkVision: !newCharacter.DarkVision,
+                        })
+                      }
+                    >
+                      {newCharacter.DarkVision
+                        ? "Dark Vision"
+                        : "No Dark Vision"}
+                    </Button>
+                  </div>
+
+                  <div className="grid grid-rows-2 grid-flow-col place-items-center ">
+                    <Input
+                      color="danger"
+                      variant="underlined"
+                      type="text"
+                      label="Wis"
+                      defaultValue={newCharacter.WIS}
+                      className="w-1/2 "
+                      onValueChange={(e) =>
+                        setNewCharacter({ ...newCharacter, wis: e })
+                      }
+                    />
+                    <Input
+                      color="danger"
+                      variant="underlined"
+                      type="text"
+                      label="Int"
+                      defaultValue={newCharacter.INT}
+                      className="w-1/2"
+                      onValueChange={(e) =>
+                        setNewCharacter({ ...newCharacter, int: e })
+                      }
+                    />
+                    <Input
+                      color="danger"
+                      variant="underlined"
+                      type="text"
+                      label="Cha"
+                      defaultValue={newCharacter.CHA}
+                      className="w-1/2"
+                      onValueChange={(e) =>
+                        setNewCharacter({ ...newCharacter, cha: e })
+                      }
+                    />
+                    <Input
+                      color="danger"
+                      variant="underlined"
+                      type="text"
+                      label="Con"
+                      defaultValue={newCharacter.CON}
+                      className="w-1/2"
+                      onValueChange={(e) =>
+                        setNewCharacter({ ...newCharacter, con: e })
+                      }
+                    />
+                    <Input
+                      color="danger"
+                      variant="underlined"
+                      type="text"
+                      label="Str"
+                      defaultValue={newCharacter.STR}
+                      className="w-1/2"
+                      onValueChange={(e) =>
+                        setNewCharacter({ ...newCharacter, str: e })
+                      }
+                    />
+                    <Input
+                      color="danger"
+                      variant="underlined"
+                      type="text"
+                      label="Dex"
+                      defaultValue={newCharacter.DEX}
+                      className="w-1/2"
+                      onValueChange={(e) =>
+                        setNewCharacter({ ...newCharacter, dex: e })
+                      }
+                    />
                   </div>
                 </div>
               </ModalBody>
@@ -214,7 +262,11 @@ function Player() {
                 <Button color="danger" variant="light" onPress={onClose}>
                   Close
                 </Button>
-                <Button color="primary" onPress={handleCreate}>
+                <Button
+                  color="danger"
+                  className="text-beige"
+                  onPress={handleCreate}
+                >
                   Create Character
                 </Button>
               </ModalFooter>

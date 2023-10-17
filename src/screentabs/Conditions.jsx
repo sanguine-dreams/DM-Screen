@@ -7,7 +7,7 @@ function Conditions() {
 
   const {conditions} = useContext(DnDContext);
   return (
-    <div className='h-full text-left font-[Modesto-expanded]'>
+    <div className='px-4 h-full text-left font-[Modesto-expanded]'>
 
       {conditions.map((condition,i) => <Accordion>
    

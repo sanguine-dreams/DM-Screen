@@ -36,11 +36,12 @@ code {
   background-size: cover;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 
 
 }
  #root *{
-    font-size: 1.2rem;
+ font-size: 1rem;
 
  }
 
@@ -48,9 +49,6 @@ code {
   background-image: url('/src/assets/background-2076335_1920.jpg');
  }
 
- table { 
-  
-} 
 
 th, td , tr{ 
   background-color: transparent;
@@ -100,3 +98,13 @@ background-image: url('/src/assets/background-2076335_1920.jpg');
 padding: 4px;
 
 }
+
+.casting {
+
+  text-align: center!important;
+}
+
+.level {
+  text-align: center;
+}
+

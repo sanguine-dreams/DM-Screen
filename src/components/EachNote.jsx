@@ -5,15 +5,16 @@ import { RiQuillPenFill } from "react-icons/ri";
 import { RiChatDeleteFill } from "react-icons/ri";
 import { updateNotes, deleteNote } from "../services/services";
 
-function EachNote({ value }) {
+function EachNote({ value , handleDelete, handleUpdate }) {
   const [newNote, setNewNote] = useState(value);
+
 
   return (
     <div>
       <div className="m-4 border-2 border-brown rounded-md">
         <div className="flex flex-row justify-end">
           <Button
-            onClick={() => updateNotes(newNote, value.id)}
+            onClick={() => handleUpdate(newNote, value.id)}
             isIconOnly
             color="danger"
             variant="light"
@@ -22,7 +23,7 @@ function EachNote({ value }) {
             <RiQuillPenFill />
           </Button>
           <Button
-            onClick={() => deleteNote(newNote.id)}
+            onClick={() => handleDelete(newNote.id)}
             isIconOnly
             color="danger"
             variant="light"

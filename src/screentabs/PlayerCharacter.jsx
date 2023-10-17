@@ -1,21 +1,24 @@
 import { RiQuillPenFill } from "react-icons/ri";
 import { RiChatDeleteFill } from "react-icons/ri";
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { keys } from "../utils/keys";
 import { Input, Button } from "@nextui-org/react";
 import { Switch } from "@nextui-org/react";
 import { LuEyeOff } from "react-icons/lu";
 import { LuMoon } from "react-icons/lu";
-import { updatePlayers, deletePlayer } from "../services/services";
+import { updatePlayers, deletePlayer, getPlayers } from "../services/services";
 
-function PlayerCharacter({ player }) {
+function PlayerCharacter({ player, handleDelete, handleUpdate }) {
   const [newPlayer, setNewPlayer] = useState(player);
 
+
+
+
   return (
-    <div className="characters m-2 p-2 border-double border-2 border-brown rounded-md ">
+    <div className="characters m-2 p-2 pb-4 border-double border-2 border-brown rounded-md ">
       <div className="flex flex-row justify-end">
         <Button
-          onClick={() => updatePlayers(newPlayer)}
+          onClick={() => handleUpdate(newPlayer)}
           isIconOnly
           color="danger"
           variant="light"
@@ -23,7 +26,7 @@ function PlayerCharacter({ player }) {
           <RiQuillPenFill />
         </Button>
         <Button
-          onClick={() => deletePlayer(newPlayer.id)}
+          onClick={() => handleDelete(newPlayer.id)}
           isIconOnly
           color="danger"
           variant="light"
@@ -73,20 +76,15 @@ function PlayerCharacter({ player }) {
             className="max-w-xs my-align-right"
             onValueChange={(e) => setNewPlayer({ ...newPlayer, WalkSpeed: e })}
           />
-          <Switch
-            size="lg"
-            color="success"
-            isSelected={newPlayer.DarkVision}
-            thumbIcon={({ isSelected, className }) =>
-              newPlayer.DarkVision ? (
-                <LuMoon className={className} />
-              ) : (
-                <LuEyeOff className={className} />
-              )
+          <Button
+            className="text-brown"
+            variant="light"
+            onClick={() =>
+              setNewPlayer({ ...newPlayer, DarkVision: !newPlayer.DarkVision })
             }
           >
-            Darkvision
-          </Switch>
+            {newPlayer.DarkVision ? "Dark Vision" : "No Dark Vision"}
+          </Button>
         </div>
 
         <div className="grid grid-rows-2 grid-flow-col place-items-center ">

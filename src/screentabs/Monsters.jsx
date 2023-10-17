@@ -45,8 +45,7 @@ function Monsters() {
   return (
     <div className="scale-x-[-1]">
       <Table
-      className=" bg-blue-200"
-        
+      
        
         bottomContent={
           <div className="flex w-full justify-center bg-red-200">
@@ -65,7 +64,7 @@ function Monsters() {
           wrapper: "min-h-[222px] table-wrapper",
         }}
       >
-        <TableHeader className="headddd">
+        <TableHeader >
           <TableColumn>Monster Name</TableColumn>
           <TableColumn>
             <button onClick={controlCR}>CR</button>
@@ -88,7 +87,7 @@ function Monsters() {
         </TableBody>
       </Table>
 
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
+      <Modal className="bg-orange-100 " isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
         <ModalContent>
           {(onClose) => (
             <>

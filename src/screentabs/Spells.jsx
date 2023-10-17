@@ -12,6 +12,7 @@ export default function Spells() {
 
     const pages = Math.ceil(1435 / 49);
     
+    
 
   return (
     <Table 
@@ -45,8 +46,8 @@ export default function Spells() {
         {(spell) => (
           <TableRow key={spell.slug} className="text-left">
             <TableCell className="text-left">{spell.name}</TableCell>
-            <TableCell>{spell.level}</TableCell>
-            <TableCell >{spell.casting_time.slice(0, 10)}</TableCell>
+            <TableCell className='level'>{spell.level!='Cantrip'?spell.level.slice(0,3):spell.level}</TableCell>
+            <TableCell className='casting' >{spell.casting_time.slice(0, 10)}</TableCell>
             <TableCell>{spell.duration}</TableCell>
             <TableCell>{spell.range}</TableCell>
           </TableRow>

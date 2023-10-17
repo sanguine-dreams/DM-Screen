@@ -95,7 +95,7 @@ export async function postPlayers(body) {
       Notes: body.Notes, 
       CampaignHead:  window.localStorage.getItem(keys.cId) })
     
-      return response.data
+  
 }
 
 export async function deletePlayer(id) {
