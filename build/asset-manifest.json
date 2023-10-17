@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e473d239.css",
+    "main.js": "/static/js/main.9a726c4a.js",
+    "static/js/787.e91ba937.chunk.js": "/static/js/787.e91ba937.chunk.js",
+    "static/media/background.jpg": "/static/media/background.975dd8da3019e5f19d5a.jpg",
+    "static/media/background-2076335_1920.jpg": "/static/media/background-2076335_1920.7c524a08e1405c073d2b.jpg",
+    "static/media/modesto-expanded.ttf": "/static/media/modesto-expanded.d5d02a6a688670372dbc.ttf",
+    "static/media/modesto-condensed-bold.ttf": "/static/media/modesto-condensed-bold.70e943eb40c806d88ad7.ttf",
+    "static/media/modesto-sub.ttf": "/static/media/modesto-sub.487049b861c1d8601f8c.ttf",
+    "index.html": "/index.html",
+    "main.e473d239.css.map": "/static/css/main.e473d239.css.map",
+    "main.9a726c4a.js.map": "/static/js/main.9a726c4a.js.map",
+    "787.e91ba937.chunk.js.map": "/static/js/787.e91ba937.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e473d239.css",
+    "static/js/main.9a726c4a.js"
+  ]
+}
