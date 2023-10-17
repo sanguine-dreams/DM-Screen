@@ -36,7 +36,7 @@ function Armor({ armor }) {
 
         <TableBody>
           {armor.map((eq) => (
-            <TableRow className="text-left">
+            <TableRow className="text-left" key={eq.slug}>
               <TableCell>{eq.name}</TableCell>
               <TableCell>{eq.ac_string}</TableCell>
               <TableCell>{eq.category}</TableCell>

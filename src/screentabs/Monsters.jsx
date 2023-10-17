@@ -43,8 +43,7 @@ function Monsters() {
   return (
     <div className="scale-x-[-1]">
       <Table
-      
-       
+      aria-label="Monsters Table"
         bottomContent={
           <div className="flex w-full justify-center bg-red-200">
             <Pagination

@@ -18,6 +18,7 @@ function MagicItems({ magicItems }) {
   return (
     <div className="equipment-card flex flex-wrap ">
       <Table
+      aria-label="Magic Items table"
         bottomContent={
           <div className="flex w-full justify-center">
             <Pagination
@@ -44,7 +45,7 @@ function MagicItems({ magicItems }) {
 
         <TableBody>
           {magicItems.map((eq) => (
-            <TableRow className="text-left">
+            <TableRow className="text-left" key={eq.slug}>
               <TableCell>{eq.name}</TableCell>
               <TableCell>{eq.type}</TableCell>
               <TableCell>{eq.rarity}</TableCell>

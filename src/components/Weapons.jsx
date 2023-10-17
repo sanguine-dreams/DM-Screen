@@ -45,14 +45,14 @@ function Weapons({ weapons }) {
 
         <TableBody>
           {weapons.map((eq) => (
-            <TableRow className="text-left">
+            <TableRow className="text-left" key={eq.slug}>
               <TableCell>{eq.name}</TableCell>
               <TableCell>{eq.category}</TableCell>
 
               <TableCell>
                 {" "}
-                {eq.properties?.map((e) => (
-                  <p>{e}</p>
+                {eq.properties?.map((e, i ) => (
+                  <p key={i}>{e}</p>
                 ))}{" "}
               </TableCell>
               <TableCell>

@@ -61,8 +61,9 @@ function HomePage() {
       </Button>
 
       <div className=" flex flex-col gap-4 flex-wrap h-5/6">
-        {campaigns.map((campaign) => (
+        {campaigns.map((campaign, i ) => (
           <Button
+          key={i}
             className="h-[4rem] w-4/12 bg-danger-900 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 "
             variant=""
             onClick={() => campaignChoice(campaign.id)}
